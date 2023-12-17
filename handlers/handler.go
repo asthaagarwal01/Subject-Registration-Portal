@@ -37,3 +37,16 @@ func (h *RegistrationHandler) GetAll(ctx *gofr.Context) (interface{}, error) {
     }
     return registrations, nil
 }
+
+func (h *RegistrationHandler) Update(ctx *gofr.Context) (interface{}, error) {
+    var updatedDetail models.RegistrationDetail
+    if err := ctx.Bind(&updatedDetail); err != nil {
+        return nil, NewHTTPError(http.StatusBadRequest, err.Error())
+    }
+
+    if err := h.store.Update(&updatedDetail); err != nil {
+        return nil, NewHTTPError(http.StatusInternalServerError, err.Error())
+    }
+
+    return updatedDetail, nil
+}
