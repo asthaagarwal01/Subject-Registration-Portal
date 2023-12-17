@@ -5,11 +5,11 @@ import (
     "subject-registration/handlers"
     "subject-registration/models"
     "subject-registration/store"
-    "github.com/zopsmart/GoFr"
+    "gofr.dev/pkg/gofr"
 )
 
 func main() {
-    app := GoFr.New()
+    app := gofr.New()
 
     db, err := configs.NewDB()
     if err != nil {

@@ -4,7 +4,7 @@ import (
     "net/http"
     "subject-registration/models"
     "subject-registration/store"
-    "github.com/zopsmart/GoFr"
+    "gofr.dev/pkg/gofr"
 )
 
 type RegistrationHandler struct {
@@ -15,7 +15,7 @@ func NewRegistrationHandler(store store.RegistrationStore) *RegistrationHandler 
     return &RegistrationHandler{store: store}
 }
 
-func (h *RegistrationHandler) Create(ctx *GoFr.Context) {
+func (h *RegistrationHandler) Create(ctx *gofr.Context) {
     var registration models.Registration
     if err := ctx.Bind(&registration); err != nil {
         ctx.JSON(http.StatusBadRequest, err.Error())
