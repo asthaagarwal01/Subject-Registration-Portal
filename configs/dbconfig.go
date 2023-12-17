@@ -1,12 +1,15 @@
 package configs
 
 import (
-    "gorm.io/driver/sqlite"
     "gorm.io/gorm"
+    "gorm.io/driver/mysql"
 )
 
 func NewDB() (*gorm.DB, error) {
-    db, err := gorm.Open(sqlite.Open("registration.db"), &gorm.Config{})
+    
+    dsn := "root:password@tcp(localhost:3306)/students?charset=utf8mb4&parseTime=True&loc=Local"
+
+    db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
     if err != nil {
         return nil, err
     }

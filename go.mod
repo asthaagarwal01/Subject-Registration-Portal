@@ -141,7 +141,7 @@ require (
 	google.golang.org/grpc v1.59.0 // indirect
 	google.golang.org/protobuf v1.31.0 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
-	gorm.io/driver/mysql v1.4.5 // indirect
+	gorm.io/driver/mysql v1.5.2 // indirect
 	gorm.io/driver/postgres v1.4.8 // indirect
 	gorm.io/driver/sqlserver v1.4.1 // indirect
 )
