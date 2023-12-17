@@ -21,22 +21,22 @@ Subject Registration Portal is a simple HTTP REST API built using the GoFr frame
 
 ### 1. Add Registration
    
-Method: POST
-URL: http://localhost:8000/registrations
-Body: {"name": "John Doe", "rollNo": 123, "subjectName": "Mathematics"}
+- Method: POST
+- URL: http://localhost:8000/registrations
+- Body: {"name": "John Doe", "rollNo": 123, "subjectName": "Mathematics"}
 
 ### 2. View Registrations
    
-Method: GET
-URL: http://localhost:8000/registrations
+- Method: GET
+- URL: http://localhost:8000/registrations
 
 ### 3. Update Registration
    
-Method: PUT
-URL: http://localhost:8000/registrations/{id}
-Body: {"status": "approved"}
+- Method: PUT
+- URL: http://localhost:8000/registrations/{id}
+- Body: {"status": "approved"}
 
 ### 4. Delete Registration
 
-Method: DELETE
-URL: http://localhost:8000/registrations/status/approved
+- Method: DELETE
+- URL: http://localhost:8000/registrations/status/approved
