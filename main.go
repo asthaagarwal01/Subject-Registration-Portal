@@ -10,13 +10,23 @@ import (
 
 func main() {
     app := gofr.New()
+
+    
     db, err := configs.NewDB()
     if err != nil {
         panic("failed to connect database")
     }
+
+
     db.AutoMigrate(&models.Registration{})
+
+   
     registrationStore := store.NewRegistrationStore(db)
     registrationHandler := handlers.NewRegistrationHandler(registrationStore)
-    app.POST("/registrations", registrationHandler.Create)
+
+   
+    app.POST("/registrations", registrationHandler.Create) 
+    app.GET("/registrations", registrationHandler.GetAll)  
+
     app.Start()
 }
