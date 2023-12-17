@@ -8,7 +8,8 @@ import (
     "gofr.dev/pkg/gofr"
 )
 
-func main() {
+func main() 
+{
     app := gofr.New()
 
     db, err := configs.NewDB()
@@ -16,7 +17,7 @@ func main() {
         panic("failed to connect database")
     }
 
-    // AutoMigrate the schema
+  
     db.AutoMigrate(&models.Registration{})
 
     registrationStore := store.NewRegistrationStore(db)

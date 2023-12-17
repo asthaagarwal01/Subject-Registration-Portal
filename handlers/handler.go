@@ -15,20 +15,19 @@ func NewRegistrationHandler(store store.RegistrationStore) *RegistrationHandler 
     return &RegistrationHandler{store: store}
 }
 
-func (h *RegistrationHandler) Create(ctx *gofr.Context) {
+func (h *RegistrationHandler) Create(ctx *gofr.Context) (interface{}, error) {
     var registration models.Registration
     if err := ctx.Bind(&registration); err != nil {
-        ctx.JSON(http.StatusBadRequest, err.Error())
-        return
+        
+        return nil, NewHTTPError(http.StatusBadRequest, err.Error())
     }
 
     err := h.store.Create(&registration)
     if err != nil {
-        ctx.JSON(http.StatusInternalServerError, err.Error())
-        return
+        
+        return nil, NewHTTPError(http.StatusInternalServerError, err.Error())
     }
 
-    ctx.JSON(http.StatusCreated, registration)
+    
+    return registration, nil
 }
-
-
