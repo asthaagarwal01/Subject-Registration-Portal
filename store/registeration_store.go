@@ -9,6 +9,7 @@ type RegistrationStore interface {
     Create(detail *models.RegistrationDetail) error
     GetAll() ([]models.RegistrationDetail, error)
     Update(detail *models.RegistrationDetail) error
+    DeleteByStatus(status string) error
 }
 
 type registrationStore struct {
@@ -34,4 +35,8 @@ func (store *registrationStore) GetAll() ([]models.RegistrationDetail, error) {
 func (store *registrationStore) Update(detail *models.RegistrationDetail) error {
    
     return store.db.Model(&models.RegistrationDetail{}).Where("roll_no = ?", detail.RollNo).Updates(detail).Error
+}
+
+func (store *registrationStore) DeleteByStatus(status string) error {
+    return store.db.Where("status = ?", status).Delete(&models.RegistrationDetail{}).Error
 }

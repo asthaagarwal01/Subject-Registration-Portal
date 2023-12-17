@@ -50,3 +50,13 @@ func (h *RegistrationHandler) Update(ctx *gofr.Context) (interface{}, error) {
 
     return updatedDetail, nil
 }
+
+func (h *RegistrationHandler) Delete(ctx *gofr.Context) (interface{}, error) {
+    status := ctx.PathParam("status")  
+
+    if err := h.store.DeleteByStatus(status); err != nil {
+        return nil, NewHTTPError(http.StatusInternalServerError, err.Error())
+    }
+
+    return "Records with status '" + status + "' deleted successfully", nil
+}
