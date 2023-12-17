@@ -24,6 +24,6 @@ func main() {
 
     app.POST("/registrations", registrationHandler.Create)
     app.GET("/registrations", registrationHandler.GetAll)
-
+    app.PUT("/registrations/{id}", registrationHandler.Update) 
     app.Start()
 }
