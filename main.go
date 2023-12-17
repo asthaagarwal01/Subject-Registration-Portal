@@ -18,7 +18,7 @@ func main() {
     }
 
 
-    db.AutoMigrate(&models.Registration{})
+    db.AutoMigrate(&models.RegistrationDetail{})
 
    
     registrationStore := store.NewRegistrationStore(db)

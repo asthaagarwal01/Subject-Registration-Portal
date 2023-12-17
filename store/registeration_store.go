@@ -6,10 +6,9 @@ import (
 )
 
 type RegistrationStore interface {
-    Create(registration *models.Registration) error
-    GetAll() ([]models.Registration, error)
-    Update(registration *models.Registration) error
-    Delete(id uint) error
+    Create(detail *models.RegistrationDetail) error
+    GetAll() ([]models.RegistrationDetail, error)
+   
 }
 
 type registrationStore struct {
@@ -20,20 +19,12 @@ func NewRegistrationStore(db *gorm.DB) RegistrationStore {
     return &registrationStore{db: db}
 }
 
-func (store *registrationStore) Create(registration *models.Registration) error {
-    return store.db.Create(registration).Error
+func (store *registrationStore) Create(detail *models.RegistrationDetail) error {
+    return store.db.Create(detail).Error
 }
 
-func (store *registrationStore) GetAll() ([]models.Registration, error) {
-    var registrations []models.Registration
-    err := store.db.Find(&registrations).Error
-    return registrations, err
-}
-
-func (store *registrationStore) Update(registration *models.Registration) error {
-    return store.db.Save(registration).Error
-}
-
-func (store *registrationStore) Delete(id uint) error {
-    return store.db.Delete(&models.Registration{}, id).Error
+func (store *registrationStore) GetAll() ([]models.RegistrationDetail, error) {
+    var details []models.RegistrationDetail
+    err := store.db.Find(&details).Error
+    return details, err
 }
