@@ -17,6 +17,32 @@ Subject Registration Portal is a simple HTTP REST API built using the GoFr frame
 - Docker
 - Postman for API testing
 
+## Installation
+
+### 1. Clone the Repository
+
+git clone https://github.com/yourusername/subject-registration-portal.git
+cd subject-registration-portal
+
+### 2. Set Up MySQL Database
+
+- Use Docker to run a MySQL database:
+  docker run --name mysql-db -e MYSQL_ROOT_PASSWORD=my-secret-pw -e MYSQL_DATABASE=students -p 3306:3306 -d mysql:latest
+
+  This command starts a MySQL server container with the database students
+
+### 3. Configure the Application
+
+- Update the dbconfig.go file or environment variables to match your database configuration.
+
+### 4. Build the Application
+
+go build
+
+### 5. Run the Application
+
+./subject-registration-portal
+
 ## Testing the API with Postman
 
 ### 1. Add Registration
