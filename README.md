@@ -27,7 +27,7 @@ cd subject-registration-portal
 ### 2. Set Up MySQL Database
 
 - Use Docker to run a MySQL database:
-  docker run --name mysql-db -e MYSQL_ROOT_PASSWORD=my-secret-pw -e MYSQL_DATABASE=students -p 3306:3306 -d mysql:latest
+  docker run --name mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -e MYSQL_DATABASE=students -p 3306:3306 -d mysql:latest
 
   This command starts a MySQL server container with the database students
 
